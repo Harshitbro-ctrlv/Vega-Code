@@ -166,6 +166,14 @@ export default function App() {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code, language, depth }),
       })
+      const contentType = response.headers.get('content-type') || ''
+      if (!contentType.includes('application/json')) {
+        throw new Error(
+          response.status === 404
+            ? 'The API is not deployed. Run Vega as a Render Web Service, not a Static Site.'
+            : 'The server returned an unexpected response. Please try again.',
+        )
+      }
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Something went wrong.')
       setResult(data)

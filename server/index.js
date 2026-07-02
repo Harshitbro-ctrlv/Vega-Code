@@ -12,6 +12,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 app.use(cors())
 app.use(express.json({ limit: '100kb' }))
 
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', service: 'vega-api' })
+})
+
 app.post('/api/explain', async (req, res) => {
   const { code, language = 'auto-detect', depth = 'balanced' } = req.body
 
@@ -53,10 +57,14 @@ app.post('/api/explain', async (req, res) => {
   }
 })
 
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found.' })
+})
+
 app.use(express.static(path.join(__dirname, '../dist')))
 app.use((req, res, next) => {
   if (req.path.startsWith('/api')) return next()
   res.sendFile(path.join(__dirname, '../dist/index.html'))
 })
 
-app.listen(port, () => console.log(`Vega API running on http://localhost:${port}`))
+app.listen(port, '0.0.0.0', () => console.log(`Vega API running on port ${port}`))
