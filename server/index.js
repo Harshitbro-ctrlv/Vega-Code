@@ -59,4 +59,4 @@ app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'))
 })
 
-app.listen(port, () => console.log(`Trace API running on http://localhost:${port}`))
+app.listen(port, () => console.log(`Vega API running on http://localhost:${port}`))

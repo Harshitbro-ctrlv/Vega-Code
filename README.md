@@ -1,4 +1,4 @@
-# Trace — AI Code Explainer
+# Vega — AI Code Explainer
 
 A React code explainer powered by Groq. The API key stays in the Express server and is never sent to the browser.
 

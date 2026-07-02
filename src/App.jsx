@@ -47,7 +47,7 @@ ORDER BY lifetime_value DESC;`,
 const LANGUAGES = ['Auto-detect', 'JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'Go', 'Rust', 'SQL', 'PHP']
 
 function Logo() {
-  return <div className="brand"><span className="brand-mark"><Braces size={19} /></span><span>trace</span><b>AI</b></div>
+  return <div className="brand"><span className="brand-mark"><Braces size={19} /></span><span>Vega</span><b>AI</b></div>
 }
 
 function CodeInput({ code, setCode, language, setLanguage, depth, setDepth, onExplain, loading }) {
@@ -102,7 +102,7 @@ function EmptyResult() {
   return <div className="empty-result">
     <div className="orbit"><Sparkles size={27} /></div>
     <h2>Your explanation will appear here</h2>
-    <p>Paste a snippet, choose how deep you want to go, and let Trace untangle it.</p>
+    <p>Paste a snippet, choose how deep you want to go, and let Vega untangle it.</p>
     <div className="empty-pills"><span><Zap size={14} /> Fast</span><span><Layers3 size={14} /> Structured</span><span><Gauge size={14} /> Practical</span></div>
   </div>
 }
